@@ -78,6 +78,7 @@ public class LinkedList {
         if(head != null){
             head = null;
             tail = null;
+            size = 0;
         }else{
             System.out.println("error: list is empty");
         }
@@ -142,6 +143,22 @@ public class LinkedList {
             }else {
                 return  "error: index not found";
             }
+        }
+    }
+    public void removeAllWithValue(String data){
+        if(head != null) {
+            LinkedListIterator iterator = getIterator();
+            int indexIterator = 1;
+            int eliminationCounter = 0;
+            while (iterator.hasNext()) {
+                if (data.equals(iterator.next())) {
+                    remove(indexIterator-eliminationCounter);
+                    eliminationCounter++;
+                }
+                indexIterator++;
+            }
+        }else{
+            System.out.println("error: list is empty");
         }
     }
     public int getSize(){
