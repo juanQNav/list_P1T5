@@ -1,5 +1,3 @@
-package main;
-
 import uaslp.objetos.list.linkedlist.LinkedList;
 
 import java.util.Scanner;
@@ -10,6 +8,7 @@ public class Main {
         String data, answer;
         int index;
 
+        //*********addAtTail
         do {
             System.out.print("Enter data: ");
             data = in.nextLine();
@@ -23,17 +22,27 @@ public class Main {
             System.out.println(data + " ");
         }
 
-
+        //*********getAt index
         System.out.print("what index? ");
         index = in.nextInt();
-
         data = list.getAt(index);
         System.out.println(data + " ");
 
+        //*********remove
         System.out.print("what index remove? ");
         index = in.nextInt();
-
         list.remove(index);
+        for(index = 1; index <= list.getSize(); index++){
+            data = list.getAt(index);
+            System.out.println(data + " ");
+        }
+
+        //*********setAt index
+        System.out.print("Enter data: ");
+        data = in.next();
+        System.out.print("what index? ");
+        index = in.nextInt();
+        list.setAt(index,data);
         for(index = 1; index <= list.getSize(); index++){
             data = list.getAt(index);
             System.out.println(data + " ");
