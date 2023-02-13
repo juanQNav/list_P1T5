@@ -84,44 +84,20 @@ public class LinkedList {
         }
     }
     public void setAt(int index, String data){
-        Node node = new Node(data);
-
-        if( head != null) {
-            int indexIterator = 1;
+        if(head != null) {
             LinkedListIterator iterator = getIterator();
+            int indexIterator = 1;
             while (iterator.hasNext() && indexIterator != index) {
                 iterator.next();
                 indexIterator++;
             }
-            if (index <=size && index == indexIterator) {
-                if (size == 1 && index == 1) {
-                    node.next = head;
-                    head.previous = node;
-                    head = node;
-                } else if (index > 1) {
-                    if (index == size) {
-                        Node auxiliary = tail.previous;
-                        node.next = tail;
-                        node.previous = tail.previous;
-                        tail.previous = node;
-                        auxiliary.next = node;
-                    } else {
-                        Node auxiliary = iterator.currentNode.previous;
-                        node.next = iterator.currentNode;
-                        node.previous = auxiliary;
-                        auxiliary.next = node;
-                        iterator.currentNode.previous = node;
-                    }
-                } else {
-                    node.next = head;
-                    head.previous = node;
-                    head = node;
-                }
-                size++;
-            }else {
+            if(indexIterator == index)
+            {
+                iterator.currentNode.data = data;
+            }else{
                 System.out.println("error: index not found");
-        }
-        }else {
+            }
+        }else{
             System.out.println("error: list is empty");
         }
     }

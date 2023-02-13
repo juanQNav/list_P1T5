@@ -1,10 +1,10 @@
-import uaslp.objetos.list.linkedlist.LinkedList;
-
+import uaslp.objetos.list.linkedlist.arraylist.ArrayList;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        LinkedList list = new LinkedList();
+        ArrayList array = new ArrayList();
         String data, answer;
         int index;
 
@@ -13,39 +13,38 @@ public class Main {
         do {
             System.out.print("Enter data: ");
             data = in.nextLine();
-            list.addAtTail(data);
+            array.addAtTail(data);
             System.out.print("another one? ");
             answer = in.nextLine();
         } while (answer.equals("yes"));
 
-        for(index = 1; index <= list.getSize(); index++){
-            data = list.getAt(index);
+        for(index = 0; index < array.getSize(); index++){
+            data = array.getAt(index);
             System.out.println(data + " ");
         }
 
-        //*********getAt
+        //********getAt
         System.out.println("*********getAt ");
         System.out.print("what index? ");
         index = in.nextInt();
-        data = list.getAt(index);
+        data = array.getAt(index-1);
         System.out.println(data + " ");
-
         //*********remove
         System.out.println("*********remove");
         System.out.print("what index remove? ");
         index = in.nextInt();
-        list.remove(index);
-        for(index = 1; index <= list.getSize(); index++){
-            data = list.getAt(index);
+        array.remove(index-1);
+        for(index = 0; index < array.getSize(); index++){
+            data = array.getAt(index);
             System.out.println(data + " ");
         }
-
+        
         //*********removeAll
         System.out.println("*********removeALl");
         System.out.print("you want to empty the list: ");
         data = in.next();
         if(data.equals("yes")){
-            list.removeAll();
+            array.removeAll();
         }
 
         //*********addAtFront
@@ -53,13 +52,13 @@ public class Main {
         do {
             System.out.print("Enter data: ");
             data = in.next();
-            list.addAtFront(data);
+            array.addAtFront(data);
             System.out.print("another one? ");
             answer = in.next();
         } while (answer.equals("yes"));
 
-        for(index = 1; index <= list.getSize(); index++){
-            data = list.getAt(index);
+        for(index = 0; index < array.getSize(); index++){
+            data = array.getAt(index);
             System.out.println(data + " ");
         }
         //*********setAt
@@ -68,21 +67,21 @@ public class Main {
         data = in.next();
         System.out.print("what index? ");
         index = in.nextInt();
-        list.setAt(index,data);
-        for(index = 1; index <= list.getSize(); index++){
-            data = list.getAt(index);
+        array.setAt(index-1,data);
+        for(index = 0; index < array.getSize(); index++){
+            data = array.getAt(index);
             System.out.println(data + " ");
         }
         //*********removeAllWIthValue
         System.out.println("*********removeAllWithValue");
         System.out.print("what value: ");
         data = in.next();
-        list.removeAllWithValue(data);
-        for(index = 1; index <= list.getSize(); index++){
-            data = list.getAt(index);
+        array.removeAllWithValue(data);
+        for(index = 0; index < array.getSize(); index++){
+            data = array.getAt(index);
             System.out.println(data + " ");
         }
         //*********getSize
-        System.out.println("The current size of the list is: "+list.getSize());
+        System.out.println("The current size of the list is: "+array.getSize());
     }
 }
