@@ -1,6 +1,9 @@
-package uaslp.objetos.list.linkedlist.arraylist;
+package uaslp.objetos.list.arraylist;
 
-public class ArrayList {
+import uaslp.objetos.list.Iterator;
+import uaslp.objetos.list.List;
+
+public class ArrayList implements List {
     private static final int INITIAL_SIZE = 2;
     private String []array;
     private int size; // cuántos datos se han insertado al arreglo
@@ -25,7 +28,7 @@ public class ArrayList {
         }else{
             String aux = array[size-1];
             for(int i = size; i > 0; i--){
-                array[i] = array[i - 1];
+                array[i] = array[i -1];
             }
             array[0] = data;
         }
@@ -33,7 +36,7 @@ public class ArrayList {
     }
     public void remove(int index){
         if(index <= size) {
-            for(int i = index ; i < size-1; i++){
+            for(int i = index ; i < size; i++){
                 array[i] = array[i + 1];
             }
             size--;
@@ -54,8 +57,7 @@ public class ArrayList {
         int indexIterator = 0;
         if(index <= size)
         {
-            ArrayListIterator iterator = getIterator();
-            data = iterator.currentIndex[0];
+            ArrayListIterator iterator = (ArrayListIterator) getIterator();
             while (iterator.hasNext() && indexIterator != index){
                 data = iterator.next();
                 indexIterator++;
@@ -66,15 +68,14 @@ public class ArrayList {
         }
     }
     public void removeAllWithValue(String data){
-        ArrayListIterator iterator = getIterator();
-        int index = 0;
-        int eliminatorCounter = 0;
-        while (iterator.hasNext() && index < size){
-            if(data.equals(iterator.next())){
-                remove(index-eliminatorCounter);
-            }
-            index++;
-        }
+        int counterEliminations = 0;
+       for(int i = 0; i < getSize(); i++){
+           if(data.equals(array[i-counterEliminations])){
+               remove(i - counterEliminations);
+               counterEliminations++;
+           }
+       }
+
     }
     public int getSize(){
         return size;
@@ -87,7 +88,7 @@ public class ArrayList {
         }
         array = newArray;
     }
-    public ArrayListIterator getIterator() {
+    public Iterator getIterator() {
         return new ArrayListIterator(array);
     }
 }

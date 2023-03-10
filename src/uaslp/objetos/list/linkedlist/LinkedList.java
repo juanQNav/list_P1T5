@@ -1,5 +1,9 @@
 package uaslp.objetos.list.linkedlist;
-public class LinkedList {
+
+import uaslp.objetos.list.Iterator;
+import uaslp.objetos.list.List;
+
+public class LinkedList implements List {
     private Node head;
     private Node tail;
     private int size;
@@ -41,19 +45,19 @@ public class LinkedList {
     public void remove(int index){
         Node next, previous;
         if(head != null) {
-            int indexIterator = 1;
-            LinkedListIterator iterator = getIterator();
+            int indexIterator = 0;
+            LinkedListIterator iterator = (LinkedListIterator) getIterator();
             while (iterator.hasNext() && indexIterator != index){
                 iterator.next();
                 indexIterator++;
             }
-            if(index <= size && index == indexIterator) {
+            if(index < size && index == indexIterator) {
                 next = iterator.currentNode.next;
                 previous = iterator.currentNode.previous;
-                if (size == 1 && index == 1) {
+                if (size == 0 && index == 0) {
                     head = null;
                     tail = null;
-                } else if (index > 1) {
+                } else if (index > 0) {
                     if (index == size) {
                         previous = next;
                         tail = previous;
@@ -85,8 +89,8 @@ public class LinkedList {
     }
     public void setAt(int index, String data){
         if(head != null) {
-            LinkedListIterator iterator = getIterator();
-            int indexIterator = 1;
+            LinkedListIterator iterator = (LinkedListIterator) getIterator();
+            int indexIterator = 0;
             while (iterator.hasNext() && indexIterator != index) {
                 iterator.next();
                 indexIterator++;
@@ -107,8 +111,8 @@ public class LinkedList {
             return "error: list is empty";
         }
         else{
-            int indexIterator = 1;
-            LinkedListIterator iterator = getIterator();
+            int indexIterator = 0;
+            LinkedListIterator iterator = (LinkedListIterator) getIterator();
             data = iterator.next();
             while (iterator.hasNext() && indexIterator != index){
                 data = iterator.next();
@@ -123,8 +127,8 @@ public class LinkedList {
     }
     public void removeAllWithValue(String data){
         if(head != null) {
-            LinkedListIterator iterator = getIterator();
-            int indexIterator = 1;
+            Iterator iterator = getIterator();
+            int indexIterator = 0;
             int eliminationCounter = 0;
             while (iterator.hasNext()) {
                 if (data.equals(iterator.next())) {
@@ -140,7 +144,7 @@ public class LinkedList {
     public int getSize(){
         return size;
     }
-    public LinkedListIterator getIterator(){
+    public Iterator getIterator(){
         return new LinkedListIterator(head);
     }
 }
