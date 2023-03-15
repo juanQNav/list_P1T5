@@ -3,35 +3,32 @@ package uaslp.objetos.list.arraylist;
 import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.List;
 
-public class ArrayList implements List {
+public class ArrayList <T> implements List <T>{
     private static final int INITIAL_SIZE = 2;
-    private String []array;
+    private Object []array;
     private int size; // cuántos datos se han insertado al arreglo
 
     public ArrayList(){
-        array = new String [INITIAL_SIZE];
+        array = new Object [INITIAL_SIZE];
     }
 
-    public void addAtTail(String data){
+    public void addAtTail(T data){
         if(size == array.length){
             increaseSize();
         }
         array[size] = data;
         size++;
     }
-    public void addAtFront(String data){
+    public void addAtFront(T data){
         if(size == array.length){
             increaseSize();
         }
-        if(size < 1){
-            array[0] = data;
-        }else{
-            String aux = array[size-1];
-            for(int i = size; i > 0; i--){
-                array[i] = array[i -1];
+        if (size >= 1) {
+            for (int i = size; i > 0; i--) {
+                array[i] = array[i - 1];
             }
-            array[0] = data;
         }
+        array[0] = data;
         size++;
     }
     public void remove(int index){
@@ -45,29 +42,29 @@ public class ArrayList implements List {
         }
     }
     public void removeAll(){
-        String []newArray = new String[INITIAL_SIZE];
-        array = newArray;
+        array = new Object[INITIAL_SIZE];
         size= 0;
     }
-    public void setAt(int index, String data){
+    public void setAt(int index, T data){
         array[index] = data;
     }
-    public String getAt(int index){
-        String data = null;
+    public T getAt(int index){
+        T data = null;
         int indexIterator = 0;
         if(index <= size)
         {
-            ArrayListIterator iterator = (ArrayListIterator) getIterator();
+            ArrayListIterator <T> iterator = (ArrayListIterator <T>) getIterator();
             while (iterator.hasNext() && indexIterator != index){
                 data = iterator.next();
                 indexIterator++;
             }
             return data;
         }else {
-            return "error: index not found";
+            System.out.println("error: index not found");
+            return null;
         }
     }
-    public void removeAllWithValue(String data){
+    public void removeAllWithValue(T data){
         int counterEliminations = 0;
        for(int i = 0; i < getSize(); i++){
            if(data.equals(array[i-counterEliminations])){
@@ -81,14 +78,14 @@ public class ArrayList implements List {
         return size;
     }
     private void increaseSize(){
-        String []newArray = new String[array.length * 2];
+        Object []newArray = new Object[array.length * 2];
 
         for(int i = 0; i < array.length; i++){
-            newArray[i] = array[i];
+            newArray[i] = (T) array[i];
         }
         array = newArray;
     }
-    public Iterator getIterator() {
-        return new ArrayListIterator(array);
+    public Iterator <T> getIterator() {
+        return (Iterator<T>) new ArrayListIterator<>(array);
     }
 }

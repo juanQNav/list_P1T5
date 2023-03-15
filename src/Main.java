@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        List list1 = new ArrayList();
-        List list2 = new LinkedList();
+        List <String> list1 = new ArrayList<>();
+        List <String> list2 = new LinkedList<>();
         String data, answer;
         int index;
 
@@ -81,8 +81,8 @@ public class Main {
         //*********getSize
         System.out.println("The current size of the list is: "+list1.getSize());
     }
-    public static void printList(List list){
-        Iterator iterator = list.getIterator();
+    public static void printList(List <String> list){
+        Iterator <String> iterator = list.getIterator();
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }

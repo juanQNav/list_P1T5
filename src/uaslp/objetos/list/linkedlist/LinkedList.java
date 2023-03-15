@@ -3,9 +3,9 @@ package uaslp.objetos.list.linkedlist;
 import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.List;
 
-public class LinkedList implements List {
-    private Node head;
-    private Node tail;
+public class LinkedList <T> implements List <T> {
+    private Node <T> head;
+    private Node <T> tail;
     private int size;
 
     public LinkedList(){
@@ -13,9 +13,9 @@ public class LinkedList implements List {
         tail = null;
         size = 0;
     }
-    public void addAtTail(String data){
-        Node node = new Node(data);
-        Node pointer;
+    public void addAtTail(T data){
+        Node <T> node = new Node <> (data);
+        Node <T> pointer;
         if(tail != null){
             pointer = tail;
             pointer.next = node;
@@ -27,9 +27,9 @@ public class LinkedList implements List {
         }
         size++;
     }
-    public void addAtFront(String data){
-        Node node = new Node(data);
-        Node pointer;
+    public void addAtFront(T data){
+        Node <T> node = new Node<>(data);
+        Node <T> pointer;
 
         if(head != null){
             pointer = head;
@@ -43,10 +43,11 @@ public class LinkedList implements List {
         size++;
     }
     public void remove(int index){
-        Node next, previous;
+        Node <T> next;
+        Node <T> previous;
         if(head != null) {
             int indexIterator = 0;
-            LinkedListIterator iterator = (LinkedListIterator) getIterator();
+            LinkedListIterator <T> iterator = (LinkedListIterator <T>) getIterator();
             while (iterator.hasNext() && indexIterator != index){
                 iterator.next();
                 indexIterator++;
@@ -87,9 +88,9 @@ public class LinkedList implements List {
             System.out.println("error: list is empty");
         }
     }
-    public void setAt(int index, String data){
+    public void setAt(int index, T data){
         if(head != null) {
-            LinkedListIterator iterator = (LinkedListIterator) getIterator();
+            LinkedListIterator <T> iterator = (LinkedListIterator <T>) getIterator();
             int indexIterator = 0;
             while (iterator.hasNext() && indexIterator != index) {
                 iterator.next();
@@ -105,14 +106,15 @@ public class LinkedList implements List {
             System.out.println("error: list is empty");
         }
     }
-    public String getAt(int index){
-        String data;
+    public T getAt(int index){
+        T data;
         if(head == null) {
-            return "error: list is empty";
+            System.out.println("error: list is empty");
+            return null;
         }
         else{
             int indexIterator = 0;
-            LinkedListIterator iterator = (LinkedListIterator) getIterator();
+            LinkedListIterator <T> iterator = (LinkedListIterator <T>) getIterator();
             data = iterator.next();
             while (iterator.hasNext() && indexIterator != index){
                 data = iterator.next();
@@ -121,13 +123,14 @@ public class LinkedList implements List {
             if(index == indexIterator){
                 return data;
             }else {
-                return  "error: index not found";
+                System.out.println("error: index not found");
+                return null;
             }
         }
     }
-    public void removeAllWithValue(String data){
+    public void removeAllWithValue(Object data){
         if(head != null) {
-            Iterator iterator = getIterator();
+            Iterator <T> iterator = getIterator();
             int indexIterator = 0;
             int eliminationCounter = 0;
             while (iterator.hasNext()) {
@@ -144,7 +147,7 @@ public class LinkedList implements List {
     public int getSize(){
         return size;
     }
-    public Iterator getIterator(){
-        return new LinkedListIterator(head);
+    public Iterator <T> getIterator(){
+        return new LinkedListIterator<>(head);
     }
 }

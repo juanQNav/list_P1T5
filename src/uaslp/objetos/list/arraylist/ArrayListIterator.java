@@ -2,17 +2,18 @@ package uaslp.objetos.list.arraylist;
 
 import uaslp.objetos.list.Iterator;
 
-public class ArrayListIterator implements Iterator {
-    String []currentIndex;
-    int index;
-    ArrayListIterator(String []first){
-        currentIndex = first;
-        index = 0;
+public class ArrayListIterator<T>  implements Iterator<T>{
+    T []array;
+    int currentIndex;
+    ArrayListIterator(T []first){
+        array = first;
+        currentIndex = 0;
     }
-    public boolean hasNext(){return currentIndex[index] != null;}
-    public String next(){
-        String data = currentIndex[index];
-        index++;
+    public boolean hasNext(){return array[currentIndex] != null;}
+    public T next(){
+        T data = array[currentIndex];
+        currentIndex++;
         return data;
     }
 }
+
