@@ -2,6 +2,8 @@ package uaslp.objetos.list.arraylist;
 
 import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.List;
+import uaslp.objetos.list.exceptions.BadIndexException;
+import uaslp.objetos.list.exceptions.NotNullAllowedException;
 
 public class ArrayList <T> implements List <T>{
     private static final int INITIAL_SIZE = 2;
@@ -12,14 +14,20 @@ public class ArrayList <T> implements List <T>{
         array = new Object [INITIAL_SIZE];
     }
 
-    public void addAtTail(T data){
+    public void addAtTail(T data) throws NotNullAllowedException {
+        if(data == null){
+            throw new NotNullAllowedException();
+        }
         if(size == array.length){
             increaseSize();
         }
         array[size] = data;
         size++;
     }
-    public void addAtFront(T data){
+    public void addAtFront(T data) throws NotNullAllowedException {
+        if(data == null){
+            throw new NotNullAllowedException();
+        }
         if(size == array.length){
             increaseSize();
         }
@@ -31,24 +39,36 @@ public class ArrayList <T> implements List <T>{
         array[0] = data;
         size++;
     }
-    public void remove(int index){
-        if(index <= size) {
+    public void remove(int index) throws BadIndexException {
+
+
+        if(index < size && index > -1) {
             for(int i = index ; i < size; i++){
                 array[i] = array[i + 1];
             }
             size--;
         }else {
-            System.out.println("error: index not found");
+            throw new BadIndexException();
         }
     }
     public void removeAll(){
         array = new Object[INITIAL_SIZE];
         size= 0;
     }
-    public void setAt(int index, T data){
+    public void setAt(int index, T data) throws BadIndexException, NotNullAllowedException {
+        if(index < 0 || index >= size){
+            throw new BadIndexException();
+        }
+        if(data == null){
+            throw new NotNullAllowedException();
+        }
         array[index] = data;
     }
-    public T getAt(int index){
+    public T getAt(int index) throws BadIndexException{
+        if(index < 0 || index >= size){
+            throw new BadIndexException();
+        }
+
         T data = null;
         int indexIterator = 0;
         if(index <= size)
@@ -68,7 +88,11 @@ public class ArrayList <T> implements List <T>{
         int counterEliminations = 0;
        for(int i = 0; i < getSize(); i++){
            if(data.equals(array[i-counterEliminations])){
-               remove(i - counterEliminations);
+               try {
+                   remove(i - counterEliminations);
+               } catch (BadIndexException ignored) {
+
+               }
                counterEliminations++;
            }
        }

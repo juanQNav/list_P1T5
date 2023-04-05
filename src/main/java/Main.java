@@ -1,90 +1,134 @@
 import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.List;
 import uaslp.objetos.list.arraylist.ArrayList;
+import uaslp.objetos.list.exceptions.CollectionsException;
+import  uaslp.objetos.list.exceptions.NotNullAllowedException;
+
 import uaslp.objetos.list.linkedlist.LinkedList;
 
-import java.util.Scanner;
-
 public class Main {
+
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        List <String> list1 = new ArrayList<>();
-        List <String> list2 = new LinkedList<>();
-        String data, answer;
-        int index;
 
-        //*********addAtTail
-        System.out.println("*********addAtTail");
-        do {
-            System.out.print("Enter data: ");
-            data = in.nextLine();
-            list1.addAtTail(data);
-            System.out.print("another one? ");
-            answer = in.nextLine();
-        } while (answer.equals("yes"));
+        List<Object> list1 = new LinkedList<>();
+        List<Object> list2 = new ArrayList<>();
 
-        printList(list1);
+        try {
 
-        //********getAt
-        System.out.println("*********getAt ");
-        System.out.print("what index? ");
-        index = in.nextInt();
-        data = list1.getAt(index);
-        System.out.println(data + " ");
+            System.out.println("\nTest list1 (LinkedList)");
+            testAddAtFront(list1);
+            testAddAtTail(list1);
+            testRemoveNthElement(list1);
+            testSetAtIndex(list1);
+            testGetAtIndex(list1);
+            testRemoveAllWithValue(list1);
 
-        //*********remove
-        System.out.println("*********remove");
-        System.out.print("what index remove? ");
-        index = in.nextInt();
-        list1.remove(index - 1);
+            System.out.println("\nTest list2 (ArrayList)");
+            testAddAtFront(list2);
+            testAddAtTail(list2);
+            testRemoveNthElement(list2);
+            testSetAtIndex(list2);
+            testGetAtIndex(list2);
+            testRemoveAllWithValue(list2);
 
-        printList(list1);
-        
-        //*********removeAll
-        System.out.println("*********removeALl");
-        System.out.print("you want to empty the list: ");
-        data = in.next();
-        if(data.equals("yes")){
-            list1.removeAll();
-        }
-
-        //*********addAtFront
-        System.out.println("*********addAtFront");
-        do {
-            System.out.print("Enter data: ");
-            data = in.next();
-            list1.addAtFront(data);
-            System.out.print("another one? ");
-            answer = in.next();
-        } while (answer.equals("yes"));
-
-        printList(list1);
-
-        //*********setAt
-        System.out.println("*********setAt");
-        System.out.print("Enter data: ");
-        data = in.next();
-        System.out.print("what index? ");
-        index = in.nextInt();
-        list1.setAt(index - 1,data);
-
-        printList(list1);
-
-        //*********removeAllWIthValue
-        System.out.println("*********removeAllWithValue");
-        System.out.print("what value: ");
-        data = in.next();
-        list1.removeAllWithValue(data);
-
-        printList(list1);
-
-        //*********getSize
-        System.out.println("The current size of the list is: "+list1.getSize());
-    }
-    public static void printList(List <String> list){
-        Iterator <String> iterator = list.getIterator();
-        while (iterator.hasNext()){
-            System.out.println(iterator.next());
+        } catch (CollectionsException ex) {
+            ex.printStackTrace();
         }
     }
+
+    private static void testRemoveAllWithValue(List<Object> list) throws NotNullAllowedException {
+        System.out.println("\n-> Test remove all with value.");
+        list.addAtTail("A");
+        list.addAtTail(1);
+        list.addAtTail(1);
+        list.addAtTail("A");
+        list.addAtTail(1);
+        list.addAtTail("A");
+        printList(list);
+        System.out.println("Size: " + list.getSize() + " Capacity: ");
+        list.removeAllWithValue("A");
+        printList(list);
+        System.out.println("Size: " + list.getSize());
+        list.removeAllWithValue(1);
+        printList(list);
+        System.out.println("Size: " + list.getSize());
+    }
+
+    private static void testGetAtIndex(List<Object> list) throws CollectionsException {
+        System.out.println("\n-> Test get at index.");
+        list.addAtTail("0");
+        list.addAtTail(1);
+        list.addAtTail('2');
+        printList(list);
+        System.out.println(list.getAt(0));
+        System.out.println(list.getAt(1));
+        System.out.println(list.getAt(2));
+        System.out.println(list.getAt(3));
+        list.removeAll();
+    }
+
+    private static void testSetAtIndex(List<Object> list) throws CollectionsException {
+        System.out.println("\n-> Test set at index.");
+        list.addAtTail("A");
+        list.addAtTail(2);
+        list.addAtTail(3);
+        list.addAtTail("D");
+        printList(list);
+        list.setAt(0, "X");
+        list.setAt(1, 10);
+        list.setAt(3, "Z");
+        list.setAt(4, "ERROR");
+        printList(list);
+        list.removeAll();
+    }
+
+    private static void testRemoveNthElement(List<Object> list) throws CollectionsException{
+        System.out.println("\n-> Test remove nth-element.");
+        list.addAtTail("A");
+        list.addAtTail(2);
+        list.addAtTail("C");
+        list.addAtTail(4);
+        printList(list);
+        System.out.println("Size: " + list.getSize());
+        list.remove(4);
+        list.remove(3);
+        list.remove(1);
+        list.remove(0);
+        printList(list);
+        System.out.println("Size: " + list.getSize());
+        list.remove(0);
+        printList(list);
+        System.out.println("Size: " + list.getSize());
+        list.remove(0);
+    }
+
+    private static void testAddAtTail(List<Object> list) throws NotNullAllowedException {
+        System.out.println("\n-> Test add at Tail.");
+        list.addAtTail("A");
+        list.addAtTail('C');
+        list.addAtTail(3);
+        printList(list);
+        System.out.println("Size: " + list.getSize());
+        list.removeAll();
+    }
+
+    private static void testAddAtFront(List<Object> list) throws NotNullAllowedException {
+        System.out.println("\n-> Test add at Front.");
+        list.addAtFront("A");
+        list.addAtFront(2);
+        list.addAtFront('C');
+        printList(list);
+        System.out.println("Size: " + list.getSize());
+        list.removeAll();
+    }
+
+    public static void printList(List<Object> list) {
+        Iterator<Object> it = list.getIterator();
+        System.out.print("List contents: ");
+        while (it.hasNext()) {
+            System.out.print(it.next() + " ");
+        }
+        System.out.print("\n");
+    }
+
 }
