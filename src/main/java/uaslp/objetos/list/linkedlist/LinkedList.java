@@ -57,36 +57,33 @@ public class LinkedList <T> implements List <T> {
         Node <T> next;
         Node <T> previous;
         if(head != null) {
-            int indexIterator = 0;
-            LinkedListIterator <T> iterator = (LinkedListIterator <T>) getIterator();
-            while (iterator.hasNext() && indexIterator != index){
-                iterator.next();
-                indexIterator++;
-            }
-            if(index < size && index == indexIterator) {
-                next = iterator.currentNode.next;
-                previous = iterator.currentNode.previous;
-                if (size == 0 && index == 0) {
-                    head = null;
-                    tail = null;
-                } else if (index > 0) {
-                    if (index == size) {
-                        previous = next;
-                        tail = previous;
-                    } else {
-                        next.previous = previous;
-                        previous.next = next;
-                    }
-                } else {
-                    next.previous = previous;
+            if(size == 1){
+                head = null;
+                tail = null;
+            }else{
+                if(index == 0){
+                    next = head.next;
+                    next.previous = null;
                     head = next;
+                }else {
+                    int indexIterator = 0;
+                    LinkedListIterator <T> iterator = (LinkedListIterator <T>) getIterator();
+                    while (iterator.hasNext() && indexIterator != index) {
+                        iterator.next();
+                        indexIterator++;
+                    }
+                    if(index == size -1){
+                        previous = iterator.currentNode.previous;
+                        previous.next = null;
+                    }else {
+                        next = iterator.currentNode.next;
+                        previous = iterator.currentNode.previous;
+                        previous.next = next;
+                        next.previous = previous;
+                    }
                 }
-                size--;
-            }else {
-                System.out.println("error: index " + index + " not found");
             }
-        }else {
-            System.out.println("error: list is empty");
+            size--;
         }
     }
     public void removeAll()
@@ -95,8 +92,6 @@ public class LinkedList <T> implements List <T> {
             head = null;
             tail = null;
             size = 0;
-        }else{
-            System.out.println("error: list is empty");
         }
     }
     public void setAt(int index, T data) throws BadIndexException, NotNullAllowedException {
@@ -116,23 +111,15 @@ public class LinkedList <T> implements List <T> {
             if(indexIterator == index)
             {
                 iterator.currentNode.data = data;
-            }else{
-                System.out.println("error: index not found");
             }
-        }else{
-            System.out.println("error: list is empty");
         }
     }
     public T getAt(int index) throws BadIndexException{
         if (index < 0 || index > size){
             throw new BadIndexException();
         }
-        T data;
-        if(head == null) {
-            System.out.println("error: list is empty");
-            return null;
-        }
-        else{
+        T data = null;
+        if(head != null){
             int indexIterator = 0;
             LinkedListIterator <T> iterator = (LinkedListIterator <T>) getIterator();
             data = iterator.next();
@@ -140,31 +127,25 @@ public class LinkedList <T> implements List <T> {
                 data = iterator.next();
                 indexIterator++;
             }
-            if(index == indexIterator){
-                return data;
-            }else {
-                System.out.println("error: index not found");
-                return null;
-            }
         }
+        return data;
     }
     public void removeAllWithValue(Object data){
         if(head != null) {
-            Iterator <T> iterator = getIterator();
+            LinkedListIterator <T> iterator = (LinkedListIterator <T>) getIterator();
             int indexIterator = 0;
             int eliminationCounter = 0;
             while (iterator.hasNext()) {
-                if (data.equals(iterator.next())) {
+                if (data.equals(iterator.currentNode.data)) {
                     try {
                         remove(indexIterator-eliminationCounter);
                     } catch (BadIndexException ignored) {
                     }
                     eliminationCounter++;
                 }
+                iterator.next();
                 indexIterator++;
             }
-        }else{
-            System.out.println("error: list is empty");
         }
     }
     public int getSize(){

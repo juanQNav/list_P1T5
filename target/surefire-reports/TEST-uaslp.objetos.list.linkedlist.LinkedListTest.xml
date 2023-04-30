@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.317" tests="13" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="19"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\juanj\OneDrive\Documentos\UASLP_doc\IV_sem\Tecnologia_Orientada_Objetos\1_parcial\1_proyectosJava\list_P1T5\target\test-classes;C:\Users\juanj\OneDrive\Documentos\UASLP_doc\IV_sem\Tecnologia_Orientada_Objetos\1_parcial\1_proyectosJava\list_P1T5\target\classes;C:\Users\juanj\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.3\junit-jupiter-engine-5.9.3.jar;C:\Users\juanj\.m2\repository\org\junit\platform\junit-platform-engine\1.9.3\junit-platform-engine-1.9.3.jar;C:\Users\juanj\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\juanj\.m2\repository\org\junit\platform\junit-platform-commons\1.9.3\junit-platform-commons-1.9.3.jar;C:\Users\juanj\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.3\junit-jupiter-api-5.9.3.jar;C:\Users\juanj\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Mexico_City"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="19"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="MX"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-19\bin"/>
+    <property name="sun.java.command" value="C:\Users\juanj\AppData\Local\Temp\surefire10455838136909808702\surefirebooter17447474140772322361.jar C:\Users\juanj\AppData\Local\Temp\surefire10455838136909808702 2023-04-29T23-58-11_795-jvmRun1 surefire4326893069847591811tmp surefire_010309432897833218001tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\juanj\OneDrive\Documentos\UASLP_doc\IV_sem\Tecnologia_Orientada_Objetos\1_parcial\1_proyectosJava\list_P1T5\target\test-classes;C:\Users\juanj\OneDrive\Documentos\UASLP_doc\IV_sem\Tecnologia_Orientada_Objetos\1_parcial\1_proyectosJava\list_P1T5\target\classes;C:\Users\juanj\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.3\junit-jupiter-engine-5.9.3.jar;C:\Users\juanj\.m2\repository\org\junit\platform\junit-platform-engine\1.9.3\junit-platform-engine-1.9.3.jar;C:\Users\juanj\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\juanj\.m2\repository\org\junit\platform\junit-platform-commons\1.9.3\junit-platform-commons-1.9.3.jar;C:\Users\juanj\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.3\junit-jupiter-api-5.9.3.jar;C:\Users\juanj\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\juanj"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-01-17"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-19"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\juanj\OneDrive\Documentos\UASLP_doc\IV_sem\Tecnologia_Orientada_Objetos\1_parcial\1_proyectosJava\list_P1T5"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\juanj\AppData\Local\Temp\surefire10455838136909808702\surefirebooter17447474140772322361.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="19.0.2+7-44"/>
+    <property name="user.name" value="juanj"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\juanj\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\juanj\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2022.3.2"/>
+    <property name="java.version" value="19.0.2"/>
+    <property name="user.dir" value="C:\Users\juanj\OneDrive\Documentos\UASLP_doc\IV_sem\Tecnologia_Orientada_Objetos\1_parcial\1_proyectosJava\list_P1T5"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-19\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\CodeBlocks\MinGW\bin;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Users\juanj\AppData\Local\Microsoft\WindowsApps;;C:\Users\juanj\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2022.3.2\bin;;C:\Users\juanj\.dotnet\tools;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="19.0.2+7-44"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="63.0"/>
+  </properties>
+  <testcase name="whenLinkedListIsCreate_thenItIsEmpty" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.169"/>
+  <testcase name="whenGetAtBadIndexOnList_thenExceptionThrow" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.042"/>
+  <testcase name="whenSetAtDataOnList_thenThisIndexDataChange" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.014"/>
+  <testcase name="whenRemoveOneElementIndexOnList_thenSizeDecrementOne" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.004"/>
+  <testcase name="whenAddAtFrontList_thenSizeIncreasesOne" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.003"/>
+  <testcase name="whenRemoveBadIndexOnList_thenExceptionIsThrow" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.003"/>
+  <testcase name="whenRemoveAllWithValueList_thenSizeDecrement" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.005"/>
+  <testcase name="whenSetAtNullDataOnList_thenExceptionThrow" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.008"/>
+  <testcase name="whenAddNullDataToAddAtTailList_thenExceptionIsThrow" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.001"/>
+  <testcase name="whenSetAtBadIndexOnList_thenExceptionThrow" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.007"/>
+  <testcase name="whenAddNullDataToAddAtFrontList_thenExceptionIsThrow" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0.014"/>
+  <testcase name="whenAddAtTailList_thenSizeIncreasesOne" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0"/>
+  <testcase name="whenRemoveAllList_thenSizeZero" classname="uaslp.objetos.list.linkedlist.LinkedListTest" time="0"/>
+</testsuite>
