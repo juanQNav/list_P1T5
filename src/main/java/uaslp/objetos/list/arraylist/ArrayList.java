@@ -40,15 +40,13 @@ public class ArrayList <T> implements List <T>{
         size++;
     }
     public void remove(int index) throws BadIndexException {
-
-
-        if(index < size && index > -1) {
+        if(index < 0 || index >= size) {
+            throw new BadIndexException();
+        }else {
             for(int i = index ; i < size; i++){
                 array[i] = array[i + 1];
             }
             size--;
-        }else {
-            throw new BadIndexException();
         }
     }
     public void removeAll(){
@@ -65,28 +63,22 @@ public class ArrayList <T> implements List <T>{
         array[index] = data;
     }
     public T getAt(int index) throws BadIndexException{
-        if(index < 0 || index >= size){
+        if(index < 0 || index > size){
             throw new BadIndexException();
-        }
-
-        T data = null;
+        }else{
         int indexIterator = 0;
-        if(index <= size)
-        {
             ArrayListIterator <T> iterator = (ArrayListIterator <T>) getIterator();
             while (iterator.hasNext() && indexIterator != index){
-                data = iterator.next();
                 indexIterator++;
+                iterator.next();
             }
-            return data;
-        }else {
-            System.out.println("error: index not found");
-            return null;
+            return iterator.array[indexIterator];
         }
     }
     public void removeAllWithValue(T data){
         int counterEliminations = 0;
-       for(int i = 0; i < getSize(); i++){
+        int auxSize = getSize();
+       for(int i = 0; i < auxSize; i++){
            if(data.equals(array[i-counterEliminations])){
                try {
                    remove(i - counterEliminations);
